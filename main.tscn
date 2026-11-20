@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://oiq5kn4t1mxm"]
 
-[ext_resource type="Script" uid="uid://bomfsupuoa3gc" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://bomfsupuoa3gc" path="res://scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="ArrayMesh" uid="uid://dkp7t3c0k6w6c" path="res://art/room_and_canvas.obj" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c0h2hfausol27" path="res://canvas_view.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://docr1467m0el3" path="res://palette_view.tscn" id="4_lquwl"]
