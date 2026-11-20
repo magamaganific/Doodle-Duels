@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://oiq5kn4t1mxm"]
+
+[ext_resource type="Script" uid="uid://bomfsupuoa3gc" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="ArrayMesh" uid="uid://dkp7t3c0k6w6c" path="res://art/room_and_canvas.obj" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c0h2hfausol27" path="res://canvas_view.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://docr1467m0el3" path="res://palette_view.tscn" id="4_lquwl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+glow_enabled = true
+fog_mode = 1
+fog_light_energy = 0.0
+fog_sun_scatter = 1.0
+fog_density = 0.754
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.0
+fog_depth_curve = 5.656856
+
+[node name="main" type="Node"]
+script = ExtResource("1_1bvp3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="3DEnvironment" type="Node3D" parent="."]
+
+[node name="RoomModel" type="MeshInstance3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_ig7tw")
+
+[node name="CanvasLight" type="SpotLight3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.35494378, 0.93488765, 0, -0.93488765, 0.35494378, 0, 314.162, 55.564987)
+shadow_enabled = true
+spot_range = 800.0
+spot_attenuation = 0.5
+
+[node name="WindowLight" type="SpotLight3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.75221944, 0.65891266, 0, -0.65891266, -0.75221944, 0, 275.10834, -436.15073)
+light_size = 1.0
+light_specular = 16.0
+shadow_enabled = true
+spot_range = 800.0
+spot_attenuation = 0.1
+
+[node name="MainCamera" type="Camera3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.96789813, 0.25134298, 0, -0.25134298, 0.96789813, 0, 151.38615, 185.75)
+fov = 35.7
+
+[node name="CanvasView" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.29619, -41.345963)
+
+[node name="PaletteView" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -100.94125, 59.229225, -38.7569)

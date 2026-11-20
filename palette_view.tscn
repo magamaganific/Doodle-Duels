@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://docr1467m0el3"]
+
+[ext_resource type="Script" uid="uid://d3yomacrxn3mr" path="res://palette_control.gd" id="1_548ho"]
+[ext_resource type="Script" uid="uid://dbttf7a3yplyp" path="res://palette_view.gd" id="1_g3x6q"]
+[ext_resource type="ArrayMesh" uid="uid://d3swus7022mp2" path="res://art/palette.obj" id="1_rgf5w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rx3dw"]
+size = Vector2(40, 40)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a72gh"]
+viewport_path = NodePath("PaletteViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgf5w"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_a72gh")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o3d8v"]
+height = 4.0
+radius = 20.0
+
+[node name="PaletteView" type="Node3D"]
+script = ExtResource("1_g3x6q")
+
+[node name="PaletteViewport" type="SubViewport" parent="."]
+editor_description = "This is the Subviewport"
+transparent_bg = true
+gui_embed_subwindows = true
+render_target_update_mode = 4
+
+[node name="PaletteControl" type="Control" parent="PaletteViewport"]
+custom_minimum_size = Vector2(518.261, 513)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_548ho")
+
+[node name="black" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 214.0
+offset_right = 95.0
+offset_bottom = 285.0
+text = "colors"
+flat = true
+
+[node name="white" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 112.0
+offset_right = 118.0
+offset_bottom = 183.0
+text = "colors"
+flat = true
+
+[node name="red" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 48.0
+offset_right = 200.0
+offset_bottom = 119.0
+text = "colors"
+flat = true
+
+[node name="orange" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 48.0
+offset_right = 309.0
+offset_bottom = 119.0
+text = "colors"
+flat = true
+
+[node name="yellow" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 103.0
+offset_right = 395.0
+offset_bottom = 174.0
+text = "colors"
+flat = true
+
+[node name="green" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 191.0
+offset_right = 453.0
+offset_bottom = 262.0
+text = "colors"
+flat = true
+
+[node name="blue" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 296.0
+offset_right = 469.0
+offset_bottom = 367.0
+text = "colors"
+flat = true
+
+[node name="purple" type="Button" parent="PaletteViewport/PaletteControl"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 389.0
+offset_right = 408.0
+offset_bottom = 460.0
+text = "colors"
+flat = true
+
+[node name="PaletteArea" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.864511, -0.6023958)
+mesh = SubResource("QuadMesh_rx3dw")
+surface_material_override/0 = SubResource("StandardMaterial3D_rgf5w")
+
+[node name="Area3D" type="Area3D" parent="PaletteArea"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PaletteArea/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_o3d8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = ExtResource("1_rgf5w")
+
+[connection signal="pressed" from="PaletteViewport/PaletteControl/black" to="PaletteViewport/PaletteControl" method="_on_black_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/white" to="PaletteViewport/PaletteControl" method="_on_white_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/red" to="PaletteViewport/PaletteControl" method="_on_red_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/orange" to="PaletteViewport/PaletteControl" method="_on_orange_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/yellow" to="PaletteViewport/PaletteControl" method="_on_yellow_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/green" to="PaletteViewport/PaletteControl" method="_on_green_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/blue" to="PaletteViewport/PaletteControl" method="_on_blue_pressed"]
+[connection signal="pressed" from="PaletteViewport/PaletteControl/purple" to="PaletteViewport/PaletteControl" method="_on_purple_pressed"]
