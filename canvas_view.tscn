@@ -8,7 +8,7 @@ albedo_color = Color(1, 0.8154745, 0.8026739, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_v04ri"]
 material = SubResource("StandardMaterial3D_3umdr")
-size = Vector2(120, 106)
+size = Vector2(140, 106)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4p5h6"]
 viewport_path = NodePath("CanvasViewport")
@@ -20,7 +20,7 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_4p5h6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
-size = Vector3(120, 2, 106)
+size = Vector3(140, 2, 106)
 
 [node name="CanvasView" type="Node3D"]
 script = ExtResource("1_1rv2i")
@@ -50,6 +50,16 @@ color = Color(0.84313726, 0.87058824, 0.9098039, 1)
 [node name="PaintControl" type="Node2D" parent="CanvasViewport/TheCanvas"]
 script = ExtResource("2_1rv2i")
 
+[node name="Button" type="Button" parent="CanvasViewport/TheCanvas"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Finish"
+
 [node name="CanvasArea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9799247, 0.19936793, 0, -0.19936793, 0.9799247, 0, 0, 0)
 mesh = SubResource("QuadMesh_v04ri")
@@ -60,3 +70,5 @@ transform = Transform3D(1, 0, 0, 0, 1.4901161e-08, -0.9999997, 0, 0.9999997, 1.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CanvasArea/Area3D"]
 shape = SubResource("BoxShape3D_h2yge")
+
+[connection signal="pressed" from="CanvasViewport/TheCanvas/Button" to="CanvasViewport/TheCanvas/PaintControl" method="_on_button_pressed"]

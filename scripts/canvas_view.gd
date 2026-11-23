@@ -4,6 +4,8 @@ extends Node3D
 # NOTE: Este código está directamente copiado de la demo de gui_panel_3d de godot #
 # ############################################################################### #
 
+signal finish
+
 var last_event_pos2D := Vector2()
 var last_event_time := -1.0
 
@@ -81,3 +83,7 @@ func rotate_area_to_billboard() -> void:
 			look = Vector3(look.x, 0, look.z)
 		node_area.look_at(look, Vector3.UP)
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+
+
+func _on_button_pressed() -> void:
+	var img: Image = node_viewport.get_texture().get_image()

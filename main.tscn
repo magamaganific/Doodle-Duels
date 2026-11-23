@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bomfsupuoa3gc" path="res://scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c0h2hfausol27" path="res://canvas_view.tscn" id="2_0xm2m"]
-[ext_resource type="ArrayMesh" uid="uid://ct37sxs8kq2ys" path="res://art/room_and_canvas/room_and_canvas.obj" id="2_1bvp3"]
+[ext_resource type="ArrayMesh" uid="uid://bda7jqer3grs5" path="res://art/room_and_canvas/room_and_canvas.obj" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://docr1467m0el3" path="res://palette_view.tscn" id="4_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
@@ -59,4 +59,4 @@ fov = 35.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.29619, -41.345963)
 
 [node name="PaletteView" parent="." instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -100.94125, 59.229225, -38.7569)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -100.94125, 73.2289, -38.7569)

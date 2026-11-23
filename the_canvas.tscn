@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw7sojmr1a3tl"]
+
+[ext_resource type="Script" uid="uid://brskah24wr0wa" path="res://scripts/paint_control.gd" id="1_e7687"]
+
+[node name="TheCanvas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84313726, 0.87058824, 0.9098039, 1)
+
+[node name="PaintControl" type="Node2D" parent="."]
+script = ExtResource("1_e7687")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Finish"
