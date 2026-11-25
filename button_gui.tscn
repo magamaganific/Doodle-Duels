@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdob8sy3op737"]
+
+[ext_resource type="Script" uid="uid://2a8nuuxwru5c" path="res://button_gui.gd" id="1_35i5o"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_35i5o"]
+resource_local_to_scene = true
+size = Vector2(10, 10)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_35i5o"]
+viewport_path = NodePath("ButtonViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sksgu"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_35i5o")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sksgu"]
+size = Vector3(10, 10, 2)
+
+[node name="ButtonGui" type="Node3D"]
+script = ExtResource("1_35i5o")
+
+[node name="ButtonViewport" type="SubViewport" parent="."]
+
+[node name="Control" type="Control" parent="ButtonViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ButtonViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0071999934, 0.72, 0.01907999, 1)
+
+[node name="Button" type="Button" parent="ButtonViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "END"
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_35i5o")
+surface_material_override/0 = SubResource("StandardMaterial3D_sksgu")
+
+[node name="ButtonArea" type="Area3D" parent="ButtonMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonMesh/ButtonArea"]
+shape = SubResource("BoxShape3D_sksgu")

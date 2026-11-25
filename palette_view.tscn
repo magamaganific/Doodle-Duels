@@ -367,7 +367,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rgf5w")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_o3d8v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PaletteModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
 mesh = SubResource("ArrayMesh_548ho")
 

@@ -4,12 +4,11 @@ extends Node3D
 # NOTE: Este código está directamente copiado de la demo de gui_panel_3d de godot #
 # ############################################################################### #
 
-signal finish
-
+var is_mouse_inside := false
 var last_event_pos2D := Vector2()
 var last_event_time := -1.0
 
-@onready var node_viewport: SubViewport = $CanvasViewport
+@onready var node_viewport: SubViewport = $DrawingGUI
 @onready var node_quad: MeshInstance3D = $CanvasArea
 @onready var node_area: Area3D = $CanvasArea/Area3D
 
@@ -24,12 +23,12 @@ func _process(_delta: float) -> void:
 	rotate_area_to_billboard()
 
 func _mouse_entered_area() -> void:
-	Main.is_mouse_inside = true
 	node_viewport.notification(NOTIFICATION_VP_MOUSE_ENTER)
+	is_mouse_inside = true
 
 func _mouse_exited_area() -> void:
 	node_viewport.notification(NOTIFICATION_VP_MOUSE_EXIT)
-	Main.is_mouse_inside = false
+	is_mouse_inside = false
 
 func _unhandled_input(input_event: InputEvent) -> void:
 	for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
@@ -46,7 +45,7 @@ func _mouse_input_event(_camera: Camera3D, input_event: InputEvent, event_positi
 	event_pos3D = node_quad.global_transform.affine_inverse() * event_pos3D
 	
 	var event_pos2D := Vector2()
-	if Main.is_mouse_inside:
+	if is_mouse_inside:
 		event_pos2D = Vector2(event_pos3D.x, -event_pos3D.y)
 		event_pos2D.x = event_pos2D.x / quad_mesh_size.x
 		event_pos2D.y = event_pos2D.y / quad_mesh_size.y
@@ -85,5 +84,5 @@ func rotate_area_to_billboard() -> void:
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
 
 
-func _on_button_pressed() -> void:
-	var img: Image = node_viewport.get_texture().get_image()
+#func _on_button_pressed() -> void:
+	#var img: Image = node_viewport.get_texture().get_image()

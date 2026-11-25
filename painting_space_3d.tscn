@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0h2hfausol27"]
+
+[ext_resource type="Script" uid="uid://2bsrkkq28lg3" path="res://scripts/canvas_view.gd" id="1_1rv2i"]
+[ext_resource type="Script" uid="uid://der4eo383oihs" path="res://drawing_gui.gd" id="2_hs68c"]
+[ext_resource type="PackedScene" uid="uid://cmcwtioxohtee" path="res://drawing_space_2d.tscn" id="2_vla1w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3umdr"]
+albedo_color = Color(1, 0.8154745, 0.8026739, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v04ri"]
+material = SubResource("StandardMaterial3D_3umdr")
+size = Vector2(140, 106)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4p5h6"]
+viewport_path = NodePath("DrawingGUI")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rv2i"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_4p5h6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(140, 2, 106)
+
+[node name="PaintingSpace3D" type="Node3D"]
+script = ExtResource("1_1rv2i")
+
+[node name="DrawingGUI" type="SubViewport" parent="."]
+editor_description = "This is the Subviewport"
+transparent_bg = true
+gui_embed_subwindows = true
+render_target_update_mode = 4
+script = ExtResource("2_hs68c")
+
+[node name="DrawingSpace2D" parent="DrawingGUI" instance=ExtResource("2_vla1w")]
+
+[node name="CanvasArea" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_v04ri")
+surface_material_override/0 = SubResource("StandardMaterial3D_1rv2i")
+
+[node name="Area3D" type="Area3D" parent="CanvasArea"]
+transform = Transform3D(1, 0, 0, 0, 1.4901161e-08, -0.9999997, 0, 0.9999997, 1.4901161e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CanvasArea/Area3D"]
+shape = SubResource("BoxShape3D_h2yge")

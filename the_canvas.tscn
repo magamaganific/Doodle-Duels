@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw7sojmr1a3tl"]
 
-[ext_resource type="Script" uid="uid://brskah24wr0wa" path="res://scripts/paint_control.gd" id="1_e7687"]
+[ext_resource type="Script" uid="uid://brskah24wr0wa" path="res://scripts/canvas_paint_control.gd" id="1_e7687"]
 
 [node name="TheCanvas" type="Control"]
 layout_mode = 3
