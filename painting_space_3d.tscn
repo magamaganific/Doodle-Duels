@@ -1,24 +1,24 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0h2hfausol27"]
 
-[ext_resource type="Script" uid="uid://2bsrkkq28lg3" path="res://scripts/canvas_view.gd" id="1_1rv2i"]
-[ext_resource type="Script" uid="uid://der4eo383oihs" path="res://drawing_gui.gd" id="2_hs68c"]
+[ext_resource type="Script" uid="uid://2bsrkkq28lg3" path="res://scripts/painting_space_3d.gd" id="1_1rv2i"]
+[ext_resource type="Script" uid="uid://der4eo383oihs" path="res://scripts/drawing_gui.gd" id="2_hs68c"]
 [ext_resource type="PackedScene" uid="uid://cmcwtioxohtee" path="res://drawing_space_2d.tscn" id="2_vla1w"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3umdr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hs68c"]
 albedo_color = Color(1, 0.8154745, 0.8026739, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_v04ri"]
-material = SubResource("StandardMaterial3D_3umdr")
+material = SubResource("StandardMaterial3D_hs68c")
 size = Vector2(140, 106)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4p5h6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3g5wd"]
 viewport_path = NodePath("DrawingGUI")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rv2i"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4p5h6")
+albedo_texture = SubResource("ViewportTexture_3g5wd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(140, 2, 106)
@@ -30,7 +30,6 @@ script = ExtResource("1_1rv2i")
 editor_description = "This is the Subviewport"
 transparent_bg = true
 gui_embed_subwindows = true
-render_target_update_mode = 4
 script = ExtResource("2_hs68c")
 
 [node name="DrawingSpace2D" parent="DrawingGUI" instance=ExtResource("2_vla1w")]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk2alk33l281d"]
+
+[ext_resource type="Script" uid="uid://pjhw8d5w0sfn" path="res://spawn_space_control.gd" id="1_ga5tv"]
+[ext_resource type="Script" uid="uid://c83f6sdm7vl4a" path="res://doode_spawn_space.gd" id="1_xdeag"]
+[ext_resource type="Script" uid="uid://nc6ea1mfnwcs" path="res://spawn_space_gui.gd" id="2_fi322"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdeag"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xdeag"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_xdeag")
+size = Vector2(140, 106)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fi322"]
+viewport_path = NodePath("SpawnSpaceGUI")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmnf7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_fi322")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pmnf7"]
+size = Vector3(140, 2, 106)
+
+[node name="DoodeSpawnSpace" type="Node3D"]
+script = ExtResource("1_xdeag")
+
+[node name="CanvasArea" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_xdeag")
+surface_material_override/0 = SubResource("StandardMaterial3D_pmnf7")
+
+[node name="Area3D" type="Area3D" parent="CanvasArea"]
+transform = Transform3D(1, 0, 0, 0, 1.4901161e-08, -0.9999997, 0, 0.9999997, 1.4901161e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CanvasArea/Area3D"]
+shape = SubResource("BoxShape3D_pmnf7")
+
+[node name="SpawnSpaceGUI" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 4
+script = ExtResource("2_fi322")
+
+[node name="SpawnSpaceControl" type="Control" parent="SpawnSpaceGUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ga5tv")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://oiq5kn4t1mxm"]
+[gd_scene load_steps=10 format=3 uid="uid://oiq5kn4t1mxm"]
 
 [ext_resource type="Script" uid="uid://bomfsupuoa3gc" path="res://scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c0h2hfausol27" path="res://painting_space_3d.tscn" id="2_0xm2m"]
 [ext_resource type="ArrayMesh" uid="uid://bda7jqer3grs5" path="res://art/room_and_canvas/room_and_canvas.obj" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bbda7el3fc6qt" path="res://doode.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://docr1467m0el3" path="res://palette_view.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bk2alk33l281d" path="res://doode_spawn_space.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +29,8 @@ fog_depth_curve = 5.656856
 
 [node name="main" type="Node"]
 script = ExtResource("1_1bvp3")
+doode_scene = ExtResource("2_lquwl")
+painting_scene = ExtResource("2_0xm2m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h2yge")
@@ -58,5 +62,5 @@ fov = 35.7
 [node name="PaletteView" parent="." instance=ExtResource("4_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -100.94125, 73.2289, -38.7569)
 
-[node name="PaintingSpace3D" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 0.9799246, 0.19936791, 0, -0.19936791, 0.9799246, 0, 110.560074, -41.57106)
+[node name="DoodeSpawnSpace" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 0.9799247, 0.19936794, 0, -0.19936794, 0.9799247, 0, 110.560074, -41.57106)

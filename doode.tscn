@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbda7el3fc6qt"]
 
+[ext_resource type="Script" uid="uid://cfhx6d8coojo2" path="res://scripts/doode.gd" id="1_dsdwo"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0v1dy"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dsdwo"]
-
 [node name="Doode" type="CharacterBody3D"]
+script = ExtResource("1_dsdwo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0v1dy")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-texture = SubResource("ViewportTexture_dsdwo")
